@@ -1,0 +1,132 @@
+<!DOCTYPE HTML>
+<html>
+   	<head>
+   		<meta charset="UTF-8">
+   		<title>Starfighter</title>
+   		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=0">
+   		<link rel="shortcut icon" href="images/favicon.png">
+   		<link rel="apple-touch-icon" href="images/apple-touch-icon.png">
+   		<link rel="stylesheet" href="css/main.css">
+   		<link rel="stylesheet" href="css/jquery.mobile-1.3.1.css">
+   		<script src="js/jquery.min.js"></script>
+		<script src="js/mqttws31.js"></script>
+		<script src="js/main.js"></script>
+   		<script src="js/jquery.mobile-1.3.1.js"></script>
+		<script src="js/jquery.bpopup.min.js"></script>
+		<script src="js/jquery.couch.js"></script>
+		<script>
+			if( /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) ) {
+				window.isMobile = true;
+			} else {
+				window.isMobile = false;
+				var is_chrome = navigator.userAgent.toLowerCase().indexOf('chrome') > -1;
+				if (!is_chrome) {
+					alert("Game plays best with Google Chrome!");
+				}
+			}
+			
+		</script>
+   	</head>
+    <body id="content" onload="init()">
+		<div data-role="page" id="page">
+			<canvas id="canvas"></canvas>
+			<div id="enterName" style="display: none;" class="ui-content popup">
+				<center><h2 style="color: #0ff">Hello Goto Amsterdam!</h2></center>
+				<blockquote style="font-family: Consolas, 'Lucida Sans Unicode', 'Lucida Grande', sans-serif">Score as many points as you can before your ship is destroyed</blockquote>
+				<blockquote id="directions">
+					<ol>
+						<li><strong>Fly your ship</strong> with arrow keys (UP = thrust, L/R = turn, a/d = strafe)</li>
+						<li><strong>Shoot</strong> asteroids and enemy ships (SPACEBAR)</li>
+						<li>Avoid <strong>blowing up</strong> (dodge bullets and asteroids)</li>
+						<li>Obtain <strong>cooler weapons</strong> as your points increase</li>
+						<li>Achieve <strong>fame and glory</strong> by posting a <a onclick='$("#scoreboard").bPopup()'>top score</a></li>
+						<li>Check out the <a target="_blank" href="index.html?mode=viewer">live leaderboard</a></li>
+					</ol>
+				</blockquote>
+				<br>
+				<center>
+				<form id="nameForm" style="text-align: left; margin-top: -15px;">
+					<div style="line-height: 50px;">
+						<span><b>Game Mode</b></span>
+						<div class="ui-radio" data-role="fieldcontain" id="gameModeRadio" style="float: right; width: 60%; margin: 0; text-align:right; padding: 0">
+							<fieldset data-role="controlgroup" data-type="horizontal" data-mini="true" data-theme="c">
+								<input type="radio" name="game-mode" id="game-mode-timed" value="game-mode-timed" checked="checked" />
+								<label for="game-mode-timed">Timed</label>
+								<input type="radio" name="game-mode" id="game-mode-standard" value="game-mode-standard"  />
+								<label for="game-mode-standard">Standard</label>
+							</fieldset>
+						</div>
+					</div>
+					<center><small><i>Play time = 3 minutes (eligible for prizes)</i></small></center>
+					<div style="line-height: 50px;">
+						<span><b>Difficulty</b></span>
+						<div class="ui-radio" data-role="fieldcontain" id="difficultyRadio" style="float: right; width: 70%; margin: 0; text-align:right; padding: 0">
+							<fieldset data-role="controlgroup" data-type="horizontal" data-mini="true" data-theme="c">
+								<input type="radio" name="game-choice" id="game-choice-easy" value="game-choice-easy" />
+								<label for="game-choice-easy">Easy</label>
+								<input type="radio" name="game-choice" id="game-choice-normal" value="game-choice-normal" checked="checked" />
+								<label for="game-choice-normal">Normal</label>
+								<input type="radio" name="game-choice" id="game-choice-insane" value="game-choice-insane" />
+								<label for="game-choice-insane">Insane</label>
+							</fieldset>
+						</div>
+					</div>
+					<center><small><i>Asteroid = <span id="aPts"></span> points&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Ship = <span id="sPts"></span> points</i></small></center>
+					<div style="margin-top: 10px; line-height: 50px; overflow:auto; width:100%">
+						<span style="float: left"><b>Name / Twitter</b></span>
+						<label for="uname" class="ui-hidden-accessible ui-input-text">Name</label>
+						<input style="width: 150px; text-align: center;" type="text" name="uname" id="uname" class="ui-input-text ui-shadow-inset ui-corner-all ui-btn-shadow ui-body-a" placeholder="Name">
+					</div>
+					<input type="submit" name="loginSubmit" id="loginSubmit" value="Start" data-rel="back" data-theme="a" class="ui-btn-hidden b-close">
+				</form>
+				<br>
+				<p>Total games played:&nbsp;&nbsp;&nbsp;<span id="gamesPlayed"></span></p>
+				<p>Powered by <a target="_blank" href="http://www.ibm.com/messagesight">IBM MessageSight</a> and <a target="_blank" href="http://mqtt.org">MQTT</a></p>
+				<p>Comments and Bugs &rarr; <a target="_blank" href="http://twitter.com/bryanboyd">@bryanboyd</a></p>
+				<p>YouTube: <a target="_blank" href="http://www.youtube.com/watch?v=b9hkCHmH7H4">Scaling w/ BlueMix</a></p>
+			</center>
+			</div>
+			<div id="scoreboard" style="display: none;" class="ui-content popup">
+				<center>
+					<h2 style="font-family: Consolas, 'Lucida Sans Unicode', 'Lucida Grande', sans-serif">Leaderboard</h2>
+					<div class="ui-radio" data-role="fieldcontain" id="scoreViewSelectRadio">
+						<fieldset data-role="controlgroup" data-type="horizontal">
+							<input class='radioChoice' type="radio" name="radio-choice-1" id="radio-choice-1" value="choice-1" checked="checked" />
+							<label for="radio-choice-1">Timed (This Hour)</label>
+							<input class='radioChoice' type="radio" name="radio-choice-2" id="radio-choice-2" value="choice-2"/>
+							<label for="radio-choice-2">Timed (Today)</label>
+							<input class='radioChoice' type="radio" name="radio-choice-3" id="radio-choice-3" value="choice-3"/>
+							<label for="radio-choice-3">Timed (All)</label>
+							<input class='radioChoice' type="radio" name="radio-choice-4" id="radio-choice-4" value="choice-4"  />
+							<label for="radio-choice-4">Standard</label>
+						</fieldset>
+					</div>
+					<div style="display: block" id="tabs-1">
+						<table>
+							<tbody class="scoreTable" id="scoreTable-timed_currentHour">
+							</tbody>
+						</table>
+					</div>
+					<div style="display: none" id="tabs-2">
+						<table>
+							<tbody class="scoreTable" id="scoreTable-timed_today">
+							</tbody>
+						</table>
+					</div>
+					<div style="display: none" id="tabs-3">
+						<table>
+							<tbody class="scoreTable" id="scoreTable-timed_allTime">
+							</tbody>
+						</table>
+					</div>
+					<div style="display: none" id="tabs-4">
+						<table>
+							<tbody class="scoreTable" id="scoreTable-standard_allTime">
+							</tbody>
+						</table>
+					</div>
+				</center>
+			</div>
+		</div>
+    </body>
+</html>
