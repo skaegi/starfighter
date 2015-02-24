@@ -3,7 +3,6 @@ applications:
   disk: 512M
   name: gotostarfighterserver
   command: node starfighter.js 
-  path: .   
-  domain: ng.bluemix.net
-  mem: 512M
+  path: . 
+  memory: 512M
   instances: 1

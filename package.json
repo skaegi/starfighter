@@ -6,5 +6,8 @@
     "util": "*",
 	"express": "3.*",
 	"nano": "*"
+  },
+  "scripts": {
+    "start": "node starfighter.js"
   }
 }
