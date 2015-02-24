@@ -87,7 +87,6 @@ if (!hasWorker) {
 					},
 					willMessage: willMessage
 				});
-				break;
 			case "subscribe":
 				app.client.subscribe(params.topic);
 				break;
@@ -2087,7 +2086,7 @@ StarfighterApp.prototype.draw = function() {
 			context.textBaseline = "middle";
 			context.textAlign = "middle";
 			context.fillStyle = "#fff";
-			var txt = "Goto Starfighter";
+			var txt = "InterConnect Starfighter";
 			context.fillText(txt, (getViewportWidth() - context.measureText(txt).width) / 2, 60);
 			context.restore();
 		} else {
@@ -2251,7 +2250,7 @@ StarfighterApp.prototype.draw = function() {
 		context.textBaseline = "middle";
 		context.textAlign = "middle";
 		context.fillStyle = "#fff";
-		var txt = "Goto Starfighter";
+		var txt = "InterConnect Starfighter";
 		context.fillText(txt, (getViewportWidth() - context.measureText(txt).width) / 2, 30);
 		context.restore();
 
@@ -3131,7 +3130,7 @@ ViewerApp.prototype.draw = function() {
 		this.bullets[i].draw();
 	}
 
-	var txt = "Goto Starfighter";
+	var txt = "InterConnect Starfighter";
 	context.save();
 	context.font = "28px HelveticaNeue-Light";
 	context.strokeStyle = "#aaa";
@@ -3373,7 +3372,7 @@ ViewerApp.prototype.startAsteroidCreateInterval = function() {
 			}
 			if (self.ship.shield < 1) {
 				self.ship.shield += Math.min(0.001 + Math.random() * 0.001, 1 - self.ship.shield);
-			}
+		o	}
 		}
 	})(this), 1000);
 }

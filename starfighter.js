@@ -1,4 +1,4 @@
-/*jshint node:true*/
+/*eslint-env node */
 var http = require('http');
 var nano = require('nano')('https://m2mdemos.cloudant.com')
 	, username = "m2mdemos"
@@ -8,6 +8,7 @@ var nano = require('nano')('https://m2mdemos.cloudant.com')
 var express = require('express')
   , http = require('http')
   , path = require('path');
+
 
 var app = express();
 
