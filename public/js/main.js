@@ -9,6 +9,100 @@
 var displayMode = (getUrlVars()["mode"] == null) ? "normal" : getUrlVars()["mode"];
 var prefix = "starfighter/";
 
+/* COLOR SCHEME - IBM DESIGN RED SWATCHES */
+
+var BACKGROUND = '#fffafb';
+
+var STROKE_COLOR = '#fcf1e9';
+
+var HORIZONTAL_STROKE = STROKE_COLOR;
+var VERTICAL_STROKE = STROKE_COLOR;
+
+var SHIP = '#E71D32';
+
+var SHIP_FILL_COLOR = SHIP;
+var SHIP_LINE_COLOR = SHIP;
+
+var ENEMY_SHIP_FILL = '#d00';
+var AI_SHIP_FILL = '#00d';
+
+var ASTEROID = '#FF7832 ';
+
+var ASTEROID_FILL_COLOR = ASTEROID;
+var ASTEROID_STROKE_CLASS_3 = ASTEROID;
+var ASTEROID_STROKE_CLASS_2 = ASTEROID;
+var ASTEROID_STROKE_CLASS_1 = ASTEROID;
+
+
+
+/* COLOR SCHEME - TRON LEGACY */
+
+//var BACKGROUND = '#152d42';
+//
+//var STROKE_COLOR = '#1b3953';
+//
+//var HORIZONTAL_STROKE = STROKE_COLOR;
+//var VERTICAL_STROKE = STROKE_COLOR;
+//
+//var SHIP = '#98e9ff';
+//
+//var SHIP_FILL_COLOR = SHIP;
+//var SHIP_LINE_COLOR = SHIP;
+//
+//var ENEMY_SHIP_FILL = '#f3c518';
+//var AI_SHIP_FILL = '#e15011';
+//
+//var ASTEROID = '#1590cb';
+//
+//var ASTEROID_FILL_COLOR = ASTEROID;
+//var ASTEROID_STROKE_CLASS_3 = ASTEROID;
+//var ASTEROID_STROKE_CLASS_2 = ASTEROID;
+//var ASTEROID_STROKE_CLASS_1 = ASTEROID;
+
+
+/* COLOR SCHEME - IBM DESIGN - https://www.ibm.com/design/language/resources/swatch-book.shtml */
+
+var BACKGROUND = '#152935';
+
+var STROKE_COLOR = '#1D3649';
+
+var HORIZONTAL_STROKE = STROKE_COLOR;
+var VERTICAL_STROKE = STROKE_COLOR;
+
+var SHIP = '#A7FAE6';
+
+var SHIP_FILL_COLOR = SHIP;
+var SHIP_LINE_COLOR = SHIP;
+
+var ENEMY_SHIP_FILL = '#f3c518';
+var AI_SHIP_FILL = '#FF5050';
+
+var ASTEROID = '#EED2FF';
+
+var ASTEROID_FILL_COLOR = ASTEROID;
+var ASTEROID_STROKE_CLASS_3 = ASTEROID;
+var ASTEROID_STROKE_CLASS_2 = ASTEROID;
+var ASTEROID_STROKE_CLASS_1 = ASTEROID;
+
+
+/* COLOR SCHEME - MATERIAL DESIGN BLUE-GREY SWATCHES */
+
+//var BACKGROUND = '#263238';
+//var HORIZONTAL_STROKE = '#37474F';
+//var VERTICAL_STROKE = '#37474F';
+//var STARSHIP = '#E71D32';
+//var SHIP_FILL_COLOR = '#E71D32';
+//var ENEMY_SHIP_FILL = '#d00';
+//var AI_SHIP_FILL = '#00d';
+//var ASTEROID_FILL_COLOR = '#FF7D87 ';
+//var ASTEROID_STROKE_CLASS_3 = "#FF7D87";
+//var ASTEROID_STROKE_CLASS_2 = "#FF7D87";
+//var ASTEROID_STROKE_CLASS_1 = "#FF7D87";
+
+
+
+
+
 function getUrlVars() {
 	var vars = {};
 	var parts = window.location.href.replace(/[?&]+([^=&]+)=([^&]*)/gi, function(m, key, value) {
@@ -424,13 +518,23 @@ function difficultyString(difficulty) {
 ///////////////////////////////
 
 var resize = function() {
+    
+    var cavasArea = document.getElementById( 'canvas' );
+    
+    
+    
 	var size = {
 			width: window.innerWidth || document.body.clientWidth,
 			height: window.innerHeight || document.body.clientHeight
 	};
+    60
+    size.height = size.height - 120;
+    
+    
+    console.log( 'anton height: ' + size.height );
 	
 	// make page fit window size
-	$("#content").css("width", size.width);
+	$("#content").css("width", size.width );
 	$("#content").css("height", size.height);
 	
 	if (window.isMobile) {
@@ -905,12 +1009,16 @@ Ship.prototype.draw = function(appType) {
 			context.save();
 			context.beginPath();
 			if (this.type == "enemyShip") {
-				context.fillStyle = "rgba(224, 0, 0, " + alpha.toFixed(2) + ")";
+				context.fillStyle = ENEMY_SHIP_FILL;
+                context.strokeStyle = ENEMY_SHIP_FILL;
 			}
 			if (this.type == "AI") {
-				context.fillStyle = "rgba(0, 0, 224, " + alpha.toFixed(2) + ")";
+				context.fillStyle = AI_SHIP_FILL;
+                context.strokeStyle = AI_SHIP_FILL;
 			}
-			context.strokeStyle = "rgba(255, 255, 255, " + alpha.toFixed(2) + ")";
+            
+//            context.strokeStyle = "rgba(255, 255, 255, " + alpha.toFixed(2) + ")";
+			
 			context.lineWidth = 2;
 			context.arc(lx, ly, rad, 0, Math.PI*2);
 			context.fill();
@@ -926,7 +1034,15 @@ Ship.prototype.draw = function(appType) {
 	context.rotate(this.angle);
 	context.beginPath();
 	context.lineWidth = 3;
-	context.strokeStyle = "#ffffff";
+	context.strokeStyle = SHIP_LINE_COLOR;
+    
+    if (this.type == "enemyShip") {
+		context.strokeStyle = ENEMY_SHIP_FILL; // #d00
+	}
+	if (this.type == "AI") {
+		context.strokeStyle = AI_SHIP_FILL; // #00d
+	}
+    
 	if (window.keys[38] && this.type == "ship") {
 		context.moveTo(-0.6 * ship_radius * Math.sqrt(3) / 2, -1.4 * ship_radius / 2);
 		context.fillStyle = "orange";
@@ -945,12 +1061,12 @@ Ship.prototype.draw = function(appType) {
 		context.fillRect(-0.7 * ship_radius, 0.0*ship_radius,
 							0.3*ship_radius, 0.2*ship_radius);
 	}
-	context.fillStyle = "#0f0";
+	context.fillStyle = SHIP_FILL_COLOR;
 	if (this.type == "enemyShip") {
-		context.fillStyle = "#d00";
+		context.fillStyle = ENEMY_SHIP_FILL; // #d00
 	}
 	if (this.type == "AI") {
-		context.fillStyle = "#00d";
+		context.fillStyle = AI_SHIP_FILL; // #00d
 	}
 	context.moveTo(0, ship_radius);
 	context.lineTo(0.8 *ship_radius * Math.sqrt(3) / 2, -1.4*ship_radius / 2);
@@ -1161,14 +1277,14 @@ Asteroid.prototype.draw = function() {
 	context.save();
 	context.translate(getDispX(this.worldPos.x), getDispY(this.worldPos.y));
 	context.rotate(this.angle);
-	context.fillStyle = "#999";
+	context.fillStyle = ASTEROID_FILL_COLOR; // "#999";
 	context.lineWidth = this.asteroidClass * getDispScale();
 	if (this.asteroidClass == 3) {
-		context.strokeStyle = "#faa";
+		context.strokeStyle = ASTEROID_STROKE_CLASS_3; // "#faa";
 	} else if (this.asteroidClass == 2) {
-		context.strokeStyle = "#0ff";
+		context.strokeStyle = ASTEROID_STROKE_CLASS_2; // "#0ff";
 	} else {
-		context.strokeStyle = "#aaf";
+		context.strokeStyle = ASTEROID_STROKE_CLASS_1; // "#aaf";
 	}
 	context.beginPath();
 	for (var i in this.points) {
@@ -2003,12 +2119,13 @@ StarfighterApp.prototype.scoreForShipKill = function() {
 	}
 }
 
+
 StarfighterApp.prototype.draw = function() {
 		var time_s = (new Date()).getTime();
 	var context = this.canvas.getContext("2d");
 	var shade = Math.random() 
 	context.save();
-	context.fillStyle = "#111";
+	context.fillStyle = BACKGROUND;
 	//context.fillStyle = "#" + Math.random().toString(3).slice(2).substring(20,26);
 	context.fillRect(0, 0, this.canvas.width, this.canvas.height);
 	context.restore();
@@ -2020,7 +2137,7 @@ StarfighterApp.prototype.draw = function() {
 			context.strokeStyle = "rgb("+(Math.floor(200+val*55))+",0,0)";
 			context.lineWidth = 1 + (val * 3) * getDispScale();
 		} else {
-			context.strokeStyle = "#888";
+			context.strokeStyle = VERTICAL_STROKE;
 			context.lineWidth = 1;
 		}
 		context.beginPath();
@@ -2037,7 +2154,7 @@ StarfighterApp.prototype.draw = function() {
 			context.strokeStyle = "rgb("+(Math.floor(200+val*55))+",0,0)";
 			context.lineWidth = 1 + (val * 3) * getDispScale();
 		} else {
-			context.strokeStyle = "#888";
+			context.strokeStyle = HORIZONTAL_STROKE;
 			context.lineWidth = 1;
 		}
 		context.beginPath();
@@ -2086,22 +2203,26 @@ StarfighterApp.prototype.draw = function() {
 			context.textBaseline = "middle";
 			context.textAlign = "middle";
 			context.fillStyle = "#fff";
-			var txt = "InterConnect Starfighter";
-			context.fillText(txt, (getViewportWidth() - context.measureText(txt).width) / 2, 60);
+//			var txt = "InterConnect Starfighter";
+//			context.fillText(txt, (getViewportWidth() - context.measureText(txt).width) / 2, 60);
 			context.restore();
 		} else {
 			if (this.gameTimeRemaining) {
-				context.save();
-				context.font = "48px HelveticaNeue-Light";
-				context.textBaseline = "middle";
-				context.textAlign = "middle";
-				context.fillStyle = "#f00";
+//				context.save();
+//				context.font = "48px HelveticaNeue-Light";
+//				context.textBaseline = "middle";
+//				context.textAlign = "middle";
+//				context.fillStyle = "#f00";
 				var min = Math.floor(this.gameTimeRemaining / 60).toString();
 				var sec = Math.floor(this.gameTimeRemaining % 60).toString();
 				if (sec.length == 1) { sec = "0" + sec; }
 				var txt = min + ":" + sec;
-				context.fillText(txt, (getViewportWidth() - context.measureText(txt).width) / 2, 30);
-				context.restore();
+                var gametimeNode = document.getElementById( "gametime" );
+
+                gametimeNode.innerHTML = txt;
+                
+//				context.fillText(txt, (getViewportWidth() - context.measureText(txt).width) / 2, 30);
+//				context.restore();
 			}
 		}
 		context.save();
@@ -2250,22 +2371,18 @@ StarfighterApp.prototype.draw = function() {
 		context.textBaseline = "middle";
 		context.textAlign = "middle";
 		context.fillStyle = "#fff";
-		var txt = "InterConnect Starfighter";
-		context.fillText(txt, (getViewportWidth() - context.measureText(txt).width) / 2, 30);
+//		var txt = "InterConnect Starfighter";
+//		context.fillText(txt, (getViewportWidth() - context.measureText(txt).width) / 2, 30);
 		context.restore();
 
 		if (this.gameTimeRemaining) {
-			context.save();
-			context.font = "32px HelveticaNeue-Light";
-			context.textBaseline = "middle";
-			context.textAlign = "middle";
-			context.fillStyle = "#f00";
-			var min = Math.floor(this.gameTimeRemaining / 60).toString();
-			var sec = Math.floor(this.gameTimeRemaining % 60).toString();
-			if (sec.length == 1) { sec = "0" + sec; }
-			var txt = min + ":" + sec;
-			context.fillText(txt, (getViewportWidth() - context.measureText(txt).width) / 2, 65);
-			context.restore();
+	           var min = Math.floor(this.gameTimeRemaining / 60).toString();
+				var sec = Math.floor(this.gameTimeRemaining % 60).toString();
+				if (sec.length == 1) { sec = "0" + sec; }
+				var txt = min + ":" + sec;
+                var gametimeNode = document.getElementById( "gametime" );
+
+                gametimeNode.innerHTML = txt;
 		}
 
 		context.save();
@@ -2273,14 +2390,21 @@ StarfighterApp.prototype.draw = function() {
 		context.textBaseline = "middle";
 		context.textAlign = "left";
 		context.fillStyle = "#fff";
-		context.fillText("Shield: " + ((this.ship == null) ? 0 : Math.floor(this.ship.shield * 1000) / 10) + "%", 25, getViewportHeight() - 90);
-		context.fillText("Score:  " + this.score, 25, getViewportHeight() - 55);
+        
+        var shieldNode = document.getElementById( "shieldValue" );
+        shieldNode.innerHTML = ((this.ship == null) ? 0 : Math.floor(this.ship.shield * 1000) / 10) + "%";
+        
+        var scoreNode = document.getElementById( "scoreValue" );
+        scoreNode.innerHTML = this.score
+        
+//		context.fillText("Shield: " + ((this.ship == null) ? 0 : Math.floor(this.ship.shield * 1000) / 10) + "%", 25, getViewportHeight() - 90);
+//		context.fillText("Score:  " + this.score, 25, getViewportHeight() - 55);
 
 		context.font = "14px HelveticaNeue-Light";
 		var highScoreName = (this.score > getHighestScore()) ? this.name : getHighestScoreName();
 		if (highScoreName != "") { highScoreName = "(" + highScoreName + ")"; }
-		var highScoreTxt = "High:  " + Math.max(getHighestScore(), this.score) + "  " + highScoreName;
-		context.fillText(highScoreTxt, 25, getViewportHeight() - 25);
+//		var highScoreTxt = "High:  " + Math.max(getHighestScore(), this.score) + "  " + highScoreName;
+//		context.fillText(highScoreTxt, 25, getViewportHeight() - 25);
 		context.restore();
 
 		context.save();
@@ -2288,7 +2412,11 @@ StarfighterApp.prototype.draw = function() {
 		context.textBaseline = "middle";
 		context.textAlign = "left";
 		context.fillStyle = "#fff";
-		context.fillText("up", getViewportWidth() - 180, getViewportHeight() - 200);
+        
+        /* controls */
+        
+        
+	/*	context.fillText("up", getViewportWidth() - 180, getViewportHeight() - 200);
 		context.fillText("a, d", getViewportWidth() - 180, getViewportHeight() - 180);
 		context.fillText("left, right", getViewportWidth() - 180, getViewportHeight() - 160);
 		context.fillText("space", getViewportWidth() - 180, getViewportHeight() - 140);
@@ -2299,25 +2427,33 @@ StarfighterApp.prototype.draw = function() {
 		context.fillText("strafe", getViewportWidth() - 60, getViewportHeight() - 180);
 		context.fillText("turn", getViewportWidth() - 60, getViewportHeight() - 160);
 		context.fillText("fire", getViewportWidth() - 60, getViewportHeight() - 140);
-		context.fillText("debug", getViewportWidth() - 60, getViewportHeight() - 120);
+		context.fillText("debug", getViewportWidth() - 60, getViewportHeight() - 120); */
 		if (this.gameMode != 0) { context.fillText("pause", getViewportWidth() - 60, getViewportHeight() - 100); }
 
-		context.fillText("Players", getViewportWidth() - 180, getViewportHeight() - 60);
-		context.fillText("Bots", getViewportWidth() - 180, getViewportHeight() - 40);
-		context.fillText("Asteroids", getViewportWidth() - 180, getViewportHeight() - 20);
+//		context.fillText("Players", getViewportWidth() - 180, getViewportHeight() - 60);
+//		context.fillText("Bots", getViewportWidth() - 180, getViewportHeight() - 40);
+//		context.fillText("Asteroids", getViewportWidth() - 180, getViewportHeight() - 20);
 		var players = 0;
 		var ais = 0;
 		for (var i in this.enemyShips) { 
 			if (this.enemyShips[i].type == "AI") { ais++; } else { players++; }
 		}
 		if (this.ship && this.ship.visible) { players++; }
-
-		context.font = "18px HelveticaNeue-Light";
-		context.fillText(players, getViewportWidth() - 50, getViewportHeight() - 60);
-		context.fillText(ais, getViewportWidth() - 50, getViewportHeight() - 40);
-		context.fillText(this.bigAsteroidCount, getViewportWidth() - 50, getViewportHeight() - 20);
+//
+//		context.font = "18px HelveticaNeue-Light";
+//		context.fillText(players, getViewportWidth() - 50, getViewportHeight() - 60);
+//		context.fillText(ais, getViewportWidth() - 50, getViewportHeight() - 40);
+//		context.fillText(this.bigAsteroidCount, getViewportWidth() - 50, getViewportHeight() - 20);
 		context.restore();
 
+        var playersNode = document.getElementById( "playersValue" );
+        playersNode.innerHTML = players;
+        
+        var botsNode = document.getElementById( "botsValue" );
+        botsNode.innerHTML = ais;
+        
+        var asteroidsNode = document.getElementById( "asteroidsValue" );
+        asteroidsNode.innerHTML = this.bigAsteroidCount;
 
 
 		if (this.showDebugInfo) {

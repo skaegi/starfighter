@@ -1,8 +1,169 @@
 body { 
 	-webkit-user-select: none;
 }
+
+
+
+.maincontainer{
+    display:flex;
+    align-items:flex-start;
+    flex-direction: column;
+    background: aliceblue;
+    height: 30px;
+    width:500px;   
+    border:0;
+    vertical-align: middle;
+}
+
+
+/* Title Area */
+
+.header{
+    display: flex;
+    flex-direction: row;
+    align-content: center;
+    height:60px;
+    background: #264A60;
+    font-size: 16px;
+    align-items: stretch;
+    text-shadow: none !important;
+    color: #C0E6FF;
+    padding-left: 10px;
+}
+
+.timeLabel{
+    margin-right: 5px;   
+}
+
+.gametime{
+    display: flex;
+    align-self: center;
+    padding-left: 10px;
+    margin-left: auto;
+    padding-right: 10px;
+}
+
+.menubox{
+    display: flex;
+    align-items: flex-start;
+    flex-direction: column;
+    z-index: 100;
+    height:200px;
+    margin-top: 21px;
+    margin-left:20px;
+}
+
+.menuSelectionTable {
+  display: flex;
+  align-items: flex-start;
+  flex-direction: column;
+  background: white;
+  border: 1px solid #eee;
+  margin: 1px;
+  margin-top: 2px;
+/*  visibility: collapse;*/
+  padding: 5px;
+  box-shadow: 2px 2px 5px 3px rgba(0, 0, 0, 0.2);
+}
+
+.menuSelectionItem {
+  display: flex;
+  flex-direction: row;
+  align-items: baseline;
+  padding-top: 2px;
+}
+
+.menuDescription {
+  margin-left: 5px;
+  color: #777;
+  margin-right: 10px;
+}
+
+.blogtitle{
+    display: flex;
+    align-self: center;
+    font-weight: bold;
+}
+
+.controls{
+    display: flex;
+    align-self: center;
+}
+
+
+/* Footer Area */
+
+.footer{
+    display: flex;
+    flex-direction: row;
+    align-content: center;
+    height:64px;
+    background: #264A60;
+    font-size: 16px;
+    align-items: stretch;
+    text-shadow: none !important;
+    color: #C0E6FF;
+    padding-left: 10px;
+    margin-top:-4px;
+}
+
+.shieldValue{
+    display: flex;
+    align-self: center;
+    padding-left: 10px;
+    min-width: 100px;
+}
+
+.score{
+    display: flex;
+    align-self: center;  
+    padding-left:20px;
+}
+
+.scoreValue{
+    align-self: center;
+    align-content: center;
+    padding-left: 10px;
+}
+
+.others{
+    display: flex;
+    flex-direction: row;
+    margin-left: auto;
+    padding-right: 20px;
+}
+
+.players{
+    align-self: center;
+}
+
+.playersValue{
+    align-self: center;
+    padding-left: 5px;
+    padding-right: 20px;
+}
+
+.bots{
+    align-self: center;
+}
+
+.botsValue{
+    align-self: center;
+    padding-left: 5px;
+    padding-right: 20px;
+}
+
+.asteroids{
+    align-self: center;
+}
+
+.asteroidsValue{
+    align-self: center;
+    padding-left: 5px;
+}
+
 canvas {
-	position: absolute;
+/*	position: absolute;*/
 	-webkit-user-select: none;
 }
 

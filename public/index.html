@@ -28,8 +28,48 @@
 		</script>
    	</head>
     <body id="content" onload="init()">
-		<div data-role="page" id="page">
+                    
+
+        <div data-role="page" id="page" class="maincontainer">
+            <div class="header">
+                <div class="blogtitle">Bluemix Starfighter</div>
+                 
+                
+                <div class="menubox" id="menubox">
+                    <div class="menutitle">menu</div>    
+                    <div class="menuSelectionTable">
+                        <div class="menuSelectionItem">
+                            <div class="menuDescription">information</div>
+                            
+                        </div>
+                        <div class="menuSelectionItem">
+                            <div class="menuDescription">information</div>
+                            
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="gametime">
+                    <div class="timeLabel">Time:</div>
+                    <div id="gametime"></div>
+                </div>
+                
+            </div>
 			<canvas id="canvas"></canvas>
+            <div class="flexbox-item footer">
+                <div class="blogtitle">Shield:</div>
+                <div class="shieldValue" id="shieldValue">100%</div>
+                <div class="score">Score:</div>
+                <div class="scoreValue" id="scoreValue">0</div>
+                <div class="others" id="others">
+                    <div class="players">Players:</div>
+                    <div class="playersValue" id="playersValue"></div>
+                    <div class="bots">Bots:</div>
+                    <div class="botsValue" id="botsValue"></div>
+                    <div class="asteroids">Asteroids:</div>
+                    <div class="asteroidsValue" id="asteroidsValue"></div>
+                </div>
+            </div>
 			<div id="enterName" style="display: none;" class="ui-content popup">
 				<center><h2 style="color: #0ff">Hello InterConnect!</h2></center>
 				<blockquote style="font-family: Consolas, 'Lucida Sans Unicode', 'Lucida Grande', sans-serif">Score as many points as you can before your ship is destroyed</blockquote>
