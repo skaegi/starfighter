@@ -1,8 +1,272 @@
 body { 
 	-webkit-user-select: none;
 }
+
+
+
+.maincontainer{
+    display:flex;
+    align-items:flex-start;
+    flex-direction: column;
+    background: aliceblue;
+    height: 30px;
+    width:500px;   
+    border:0;
+    vertical-align: middle;
+}
+
+
+/* Title Area */
+
+.header{
+    display: flex;
+    flex-direction: row;
+    align-content: center;
+    height:60px;
+    background: #264A60;
+    font-size: 16px;
+    align-items: stretch;
+    text-shadow: none !important;
+    color: #C0E6FF;
+    padding-left: 10px;
+}
+
+.timeLabel{
+    margin-right: 5px;   
+}
+
+.gametime{
+    display: flex;
+    align-self: center;
+    padding-left: 10px;
+    margin-left: auto;
+    padding-right: 10px;
+}
+
+.menubox{
+    display: flex;
+    align-items: flex-start;
+    flex-direction: column;
+    z-index: 100;
+    height:200px;
+    margin-top: 21px;
+    margin-left:20px;
+}
+
+.menuSelectionTable {
+  display: flex;
+  align-items: flex-start;
+  flex-direction: column;
+  background: white;
+  border: 1px solid #eee;
+  margin: 1px;
+  margin-top: 2px;
+/*  visibility: collapse;*/
+  padding: 5px;
+  box-shadow: 2px 2px 5px 3px rgba(0, 0, 0, 0.2);
+}
+
+.menuSelectionItem {
+  display: flex;
+  flex-direction: row;
+  align-items: baseline;
+  padding-top: 2px;
+}
+
+.menuDescription {
+  margin-left: 5px;
+  color: #777;
+  margin-right: 10px;
+}
+
+.blogtitle{
+    display: flex;
+    align-self: center;
+    font-weight: bold;
+}
+
+.controls{
+    display: flex;
+    align-self: center;
+}
+
+
+/* Footer Area */
+
+.footer{
+    display: flex;
+    flex-direction: row;
+    align-content: center;
+    height:64px;
+    background: #264A60;
+    font-size: 16px;
+    align-items: stretch;
+    text-shadow: none !important;
+    color: #C0E6FF;
+    padding-left: 10px;
+    margin-top:-4px;
+}
+
+.shieldValue{
+    display: flex;
+    align-self: center;
+    padding-left: 10px;
+    min-width: 100px;
+}
+
+.score{
+    display: flex;
+    align-self: center;  
+    padding-left:20px;
+}
+
+.scoreValue{
+    align-self: center;
+    align-content: center;
+    padding-left: 10px;
+}
+
+.others{
+    display: flex;
+    flex-direction: row;
+    margin-left: auto;
+    padding-right: 20px;
+}
+
+.players{
+    align-self: center;
+}
+
+.playersValue{
+    align-self: center;
+    padding-left: 5px;
+    padding-right: 20px;
+}
+
+.bots{
+    align-self: center;
+}
+
+.botsValue{
+    align-self: center;
+    padding-left: 5px;
+    padding-right: 20px;
+}
+
+.asteroids{
+    align-self: center;
+}
+
+.asteroidsValue{
+    align-self: center;
+    padding-left: 5px;
+}
+
+/*----- Menu Outline -----*/
+
+.clearfix {
+    display: block;
+    clear: both;
+    content: '';
+}
+
+.ui-link{
+    text-decoration: none !important;
+    color:#C0E6FF !important;
+    font-size: 16px;
+}
+
+.ul{
+    color: #C0E6FF;
+}
+
+.menu-wrap {
+    display: flex;
+    align-self: center;
+}
+ 
+.menu {
+    margin:0px auto;
+      display: -webkit-inline-box;
+}
+ 
+.menu li {
+    margin:0px;
+    list-style:none;
+}
+ 
+.menu a {
+    transition:all linear 0.15s;
+    color:#919191;
+}
+ 
+.menu li:hover > a, .menu .current-item > a {
+    text-decoration:none;
+    color:#be5b70;
+}
+ 
+.menu .arrow {
+    font-size:11px;
+    line-height:0%;
+}
+ 
+/*----- Top Level -----*/
+.menu > ul > li {
+    float:left;
+    display:inline-block;
+    position:relative;
+    font-size:19px;
+}
+ 
+.menu > ul > li > a {
+    padding:10px 40px;
+    display:inline-block;
+    text-shadow:0px 1px 0px rgba(0,0,0,0.4);
+}
+ 
+.menu > ul > li:hover > a, .menu > ul > .current-item > a {
+    background:#4178BE;
+}
+ 
+/*----- Bottom Level -----*/
+.menu li:hover .sub-menu {
+    z-index:1;
+    opacity:1;
+}
+ 
+.sub-menu {
+    width:160%;
+    padding:5px 0px;
+    position:absolute;
+    top:100%;
+    left:0px;
+    z-index:-1;
+    opacity:0;
+    transition:opacity linear 0.15s;
+    box-shadow:0px 2px 3px rgba(0,0,0,0.2);
+    background:#4178BE;  
+}
+ 
+.sub-menu li {
+    display:block;
+    font-size:16px;
+}
+ 
+.sub-menu li a {
+    padding:10px 30px;
+    display:block;
+}
+ 
+.sub-menu li a:hover, .sub-menu .current-item a {
+    background:#3e3436;
+}
+
+
+
+
+
 canvas {
-	position: absolute;
+/*	position: absolute;*/
 	-webkit-user-select: none;
 }
 
