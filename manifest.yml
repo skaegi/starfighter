@@ -1,7 +1,7 @@
 applications:
-- host: realta
+- host: rhostar
   disk: 512M
-  name: realta
+  name: rhostar
   command: node starfighter.js 
   path: . 
   memory: 512M
