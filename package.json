@@ -5,7 +5,8 @@
   "dependencies": {
     "util": "*",
 	"express": "3.*",
-	"nano": "*"
+	"nano": "*",
+	"newrelic": "*"
   },
   "scripts": {
     "start": "node starfighter.js"

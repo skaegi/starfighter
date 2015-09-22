@@ -1,4 +1,6 @@
 /*eslint-env node */
+require('newrelic');
+
 var http = require('http');
 var nano = require('nano')('https://m2mdemos.cloudant.com')
 	, username = "m2mdemos"
@@ -45,7 +47,8 @@ app.get('/scores', function(request, response) {
 					time: doc.time
 				});
 			}
-			response.send(scores);
+			//response.send(scores);
+			response.send([]);
 		} else {
 			console.log(err);
 		}
