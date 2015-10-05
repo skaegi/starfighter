@@ -1,8 +1,10 @@
 applications:
-- host: rhostar
+- host: starfighter-${random-word}
   disk: 512M
-  name: rhostar
+  name: starfighter
   command: node starfighter.js 
   path: . 
   memory: 512M
   instances: 1
+  services:
+  - newrelic

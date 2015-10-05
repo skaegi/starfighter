@@ -6,15 +6,15 @@
  */
 
 /*eslint-env node */
-
 var licenseKey = null;
 
-if (process.env.VCAP_SERVICES && process.env.VCAP_SERVICES['newrelic']) {
-	licenseKey = process.env.VCAP_SERVICES['newrelic'][0]['credentials']['licenseKey'];
-}
 
-if (licenseKey == null) {
-	throw new Error("Cannot determine NewRelic License Key.  Make sure to run this on Bluemix and bind to a NewRelic Service");
+if (process.env.VCAP_SERVICES) {
+	var parsedVcapServices = JSON.parse(process.env.VCAP_SERVICES);
+	
+	if (parsedVcapServices['newrelic']) {
+		licenseKey = parsedVcapServices['newrelic'][0]['credentials']['licenseKey'];
+	}
 }
 
 exports.config = {
@@ -35,3 +35,4 @@ exports.config = {
     level: 'info'
   }
 };
+

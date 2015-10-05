@@ -1,5 +1,7 @@
-Node Starfighter 
+Node Starfighter - Insight 2015
 ===
 
-This app is the starfighter webserver and interface for Cloudant 
+Level up Your Game by Using Application Health Analytics and Test Automation
 
+
+[![Deploy to Bluemix](https://bluemix.net/deploy/button.png)](https://bluemix.net/deploy?repository=https://github.com/cttttt/starfighter)
