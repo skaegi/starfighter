@@ -4,15 +4,15 @@ Node Starfighter - Interconnect 2016
 Level up Your Game by Using Application Health Analytics and Test Automation
 ----------------------------------------------------------------------------
 
-<a href="https://bluemix.net/deploy?repository=https://github.com/cttttt/starfighter" alt="Deploy to Bluemix" target="_blank"><img src="https://bluemix.net/deploy/button.png"></img></a>
+<a href="https://bluemix.net/deploy?repository=https://github.com/skaegi/starfighter" alt="Deploy to Bluemix" target="_blank"><img src="https://bluemix.net/deploy/button.png"></img></a>
 
 In this lab, you will be cloning your own copy of our Starfighter application, a multiplayer shoot-em-up powered by IBM MessageSight.  We'll outline the steps to deploy the code to IBM Bluemix and monitor the application's health using New Relic.
 
 Deploying to Bluemix
 --------------------
 
-1. To get started, first browse to the starfighter application's [git repository](https://github.com/cttttt/starfighter).
-1. Next, click on the <a href="https://bluemix.net/deploy?repository=https://github.com/cttttt/starfighter" alt="Deploy to Bluemix" target="_blank"><img src="https://bluemix.net/deploy/button.png"></img></a> button.
+1. To get started, first browse to the starfighter application's [git repository](https://github.com/skaegi/starfighter).
+1. Next, click on the <a href="https://bluemix.net/deploy?repository=https://github.com/skaegi/starfighter" alt="Deploy to Bluemix" target="_blank"><img src="https://bluemix.net/deploy/button.png"></img></a> button.
 1. If you do not already have a Bluemix account, getting one is quick and easy.  Just click on the _Sign up_ link.  If you already have an account, click on the _Login_ button to sign in.
 1. After logging in, simply click on _Deploy_ to deploy your app.
 1. If you want up to the minute status on your deployment, click on the _Configured pipeline successfully_ link to view the status of your brand new deployment pipeline *in a new tab*.  _Keep this tab open for later._
@@ -94,4 +94,4 @@ At the core of our mission on IBM DevOps Services is the concept of...you guesse
 
 In its purest sense, DevOps describes a *direction* that all facets of a development shop *can move towards* to rapidally increment on client value through software.  Its form is a collection of best practices and  cultural norms.  A generally accepted and overarching theme under this umbrella is the need to share ideas; both on problems faced by practitioners in our field and on the solutions we develop to work through them.  As we navigate our DevOps journey, we will make sure to collect and share our best practices in the [IBM Garage Method](https://www.ibm.com/devops/method).
 
-To reach out to me and my team on how your development shop solves problems using IDS and the Delivery Pipeline please [reach out to me on Twitter](https://twitter.com/ctttttttttt) or grab ahold of me or one of my squadmates!
+To reach out to me and my team on how your development shop solves problems using IDS and the Delivery Pipeline please [reach out to me on Twitter](https://twitter.com/skaegi) or grab ahold of me or one of my squadmates!
