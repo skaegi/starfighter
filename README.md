@@ -1,4 +1,4 @@
-Node Starfighter - Insight 2015
+Node Starfighter - Interconnect 2016
 -------------------------------
 
 Level up Your Game by Using Application Health Analytics and Test Automation
@@ -32,7 +32,7 @@ Although you're free to use any Git client or IDE to edit code and share changes
 1. If you haven't already done so, return to the tab with *Deploy to Bluemix*, and click on the _Created project successfully_ link.  If you happened to close this tab, first browse to your Bluemix dashboard, then click on your brand new _Starfighter_ app, then click on the _Git Repo_ link.
 1. Welcome to your DevOps Services project page.  To edit the code for your new project, click on the _Edit Code_ button along the top of the page to bring up the _Web IDE_.
 1. Choose a file to edit using the file system viewer on the left.  For your first change, choose `public/index.html`.
-1. Use the pane on the right as you would any text editor.  For your first change, edit line 91 and replace `Hello Insight` with a message of your choosing.  Without getting too much into how HTML works, make sure what you enter is a simple message composed of letters and numbers.  So you never lose your painstakingly written code changes, the Web IDE auto-saves a few moments after you each edit.  When you're done editing, simple move onto the next step.
+1. Use the pane on the right as you would any text editor.  For your first change, edit line 91 and replace `Hello Interconnect` with a message of your choosing.  Without getting too much into how HTML works, make sure what you enter is a simple message composed of letters and numbers.  So you never lose your painstakingly written code changes, the Web IDE auto-saves a few moments after you each edit.  When you're done editing, simple move onto the next step.
 1. In Git, the smallest unit of change to source files is a commit.  To make one, click on the Git icon along the left side of the browser to bring up the `Git Repository` view.
 1. Enter a descriptive commit message, and select the files you would like to include in your first commit.  In this case, it's safe to click on the _Select all_ checkbox.
 1. Click on Commit to create a commit in your personal Git repository.

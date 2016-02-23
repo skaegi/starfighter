@@ -2,7 +2,6 @@ applications:
 - host: starfighter-${random-word}
   disk: 512M
   name: starfighter
-  command: node starfighter.js 
   path: . 
   memory: 512M
   instances: 1

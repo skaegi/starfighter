@@ -19,4 +19,8 @@ if ! cf create-service newrelic standard newrelic; then
     exit 1
 fi
 
-cf push "${CF_APP}"
+touch .live-edit
+cf push "${CF_APP}" -c null --no-start
+cf set-env "${CF_APP}" BLUEMIX_APP_MGMT_ENABLE devconsole+shell+inspector
+cf set-env "${CF_APP}" NODE_ENV development
+cf start "${CF_APP}"

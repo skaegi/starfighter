@@ -21,6 +21,7 @@ stages:
       url: https://api.ng.bluemix.net
       organization: ${CF_ORGANIZATION}
       space: ${CF_SPACE}
+      application: ${CF_APP}
     script: |-
       #!/bin/bash
       bash scripts/deploy.sh
