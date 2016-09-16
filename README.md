@@ -95,4 +95,3 @@ At the core of our mission on IBM DevOps Services is the concept of...you guesse
 In its purest sense, DevOps describes a *direction* that all facets of a development shop *can move towards* to rapidally increment on client value through software.  Its form is a collection of best practices and  cultural norms.  A generally accepted and overarching theme under this umbrella is the need to share ideas; both on problems faced by practitioners in our field and on the solutions we develop to work through them.  As we navigate our DevOps journey, we will make sure to collect and share our best practices in the [IBM Garage Method](https://www.ibm.com/devops/method).
 
 To reach out to me and my team on how your development shop solves problems using IDS and the Delivery Pipeline please [reach out to me on Twitter](https://twitter.com/skaegi) or grab ahold of me or one of my squadmates!
-
