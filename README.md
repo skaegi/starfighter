@@ -96,4 +96,3 @@ In its purest sense, DevOps describes a *direction* that all facets of a develop
 
 To reach out to me and my team on how your development shop solves problems using IDS and the Delivery Pipeline please [reach out to me on Twitter](https://twitter.com/skaegi) or grab ahold of me or one of my squadmates!
 
-
