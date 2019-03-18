@@ -5,5 +5,3 @@ applications:
   path: . 
   memory: 512M
   instances: 1
-  services:
-  - newrelic
